@@ -1,0 +1,15 @@
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: eureka7002.com # Eureka Server instance name
+  client:
+    register-with-eureka: false # Don't register itself with the registry
+    fetch-registry: false # The registry does not need to retrieve services
+    service-url:
+      # The address query service and registration service that interact with Eureka server need to rely on this address
+      defaultZone: http://eureka7001.com:7001/eureka/
+#  server:
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 2000

@@ -1,0 +1,33 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/gregperlinli/spring-cloud-config.git
+          username: gregPerlinLi
+          password: lihaolin20011104
+          skip-ssl-validation: true
+          search-paths:
+            - spring-cloud-config
+      label: master
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"

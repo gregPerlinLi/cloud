@@ -1,0 +1,30 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+        port: 8719
+        client-ip: 192.168.31.4
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 激活 Sentinel 对 Feign 的支持
+feign:
+  sentinel:
+    enabled: true
+
+# 消费者将要去访问的微服务名称 (注册成功进 Nacos 的微服务生产者)
+service-url:
+  nacos-user-service: http://nacos-payment-provider

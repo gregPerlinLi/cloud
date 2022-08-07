@@ -1,0 +1,22 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/, http://eureka7002.com:7002/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        # The time taken to establish the connection is applicable to the time taken to connect the end link under normal network conditions
+        connect-timeout: 5000
+        # The time it takes to read available resources from the server after the connection is established
+        read-timeout: 5000
+
+logging:
+  level:
+    # At what level does feign log monitor which interface
+    com.gregperlinli.springcloud.service.PaymentFeignService: debug
